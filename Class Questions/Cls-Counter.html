@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f4f8;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    #counter {
+      font-size: 48px;
+      font-weight: bold;
+      color: #333;
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #incrementButton {
+      background-color: #4caf50;
+      color: #fff;
+    }
+    #incrementButton:hover {
+      background-color: #45a049;
+    }
+    #decrementButton {
+      background-color: #f44336;
+      color: #fff;
+    }
+    #decrementButton:hover {
+      background-color: #e53935;
+    }
+  </style>
+</head>
+<body>
+  <h2>Counter</h2>
+  <p id="counter">0</p>
+  <button id="incrementButton">Increment   👆</button>
+  <button id="decrementButton">Decrement   👇</button>
+
+  <script>
+    class Counter {
+      constructor() {
+        this.count = 0;
+        this.counterDisplay = document.getElementById('counter');
+        this.incrementButton = document.getElementById('incrementButton');
+        this.decrementButton = document.getElementById('decrementButton');
+
+        this.incrementButton.addEventListener('click', () => this.increment());
+        this.decrementButton.addEventListener('click', () => this.decrement());
+      }
+
+      increment() {
+        this.count++;
+        this.updateDisplay();
+      }
+
+      decrement() {
+        this.count--;
+        this.updateDisplay();
+      }
+
+      updateDisplay() {
+        this.counterDisplay.textContent = this.count;
+      }
+    }
+
+    new Counter();
+  </script>
+</body>
+</html>

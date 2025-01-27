@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
+
+    input[type="text"]:focus {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #displayText {
+      margin-top: 15px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Track Input Changes</h2>
+  <input type="text" id="inputField" placeholder="Type something">
+  <p id="displayText"></p>
+
+  <script>
+    function updateText() {
+      const inputField = document.getElementById('inputField');
+      const displayText = document.getElementById('displayText');
+      displayText.textContent = inputField.value;
+    }
+
+    document.getElementById('inputField').addEventListener('input', updateText);
+  </script>
+</body>
+</html>

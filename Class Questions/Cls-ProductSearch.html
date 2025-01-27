@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Search</title>
+  <style>
+    #productList { margin-top: 10px; }
+    li { list-style-type: none; }
+  </style>
+</head>
+<body>
+  <h2>Product Search</h2>
+  <input type="text" id="searchInput" placeholder="Search for a product">
+  <ul id="productList"></ul>
+
+  <script>
+    class ProductSearch {
+      constructor(products) {
+        this.products = products;
+        this.filteredProducts = products;
+        this.searchInput = document.getElementById('searchInput');
+        this.productList = document.getElementById('productList');
+        this.searchInput.addEventListener('input', () => this.filterProducts());
+        this.render();
+      }
+
+      filterProducts() {
+        const searchTerm = this.searchInput.value.toLowerCase();
+        this.filteredProducts = this.products.filter(product =>
+          product.toLowerCase().includes(searchTerm)
+        );
+        this.render();
+      }
+
+      render() {
+        this.productList.innerHTML = '';
+        this.filteredProducts.forEach(product => {
+          const li = document.createElement('li');
+          li.textContent = product;
+          this.productList.appendChild(li);
+        });
+      }
+    }
+
+    new ProductSearch(['Shirt', 'Pants', 'Shoes', 'Hat', 'Jacket']);
+  </script>
+</body>
+</html>

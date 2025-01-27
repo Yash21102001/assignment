@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Bar</title>
+</head>
+<body>
+  <h2>Search Bar</h2>
+  <input type="text" id="searchInput" placeholder="Search for a name">
+  <ul id="nameList">
+    <li>John</li>
+    <li>Abhi</li>
+    <li>Manan</li>
+    <li>Amit</li>
+    <li>Manav</li>
+  </ul>
+
+  <script>
+    function handleSearch() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const nameList = document.getElementById('nameList');
+      const names = nameList.getElementsByTagName('li');
+      
+      for (let name of names) {
+        if (name.textContent.toLowerCase().includes(searchTerm)) {
+          name.style.display = '';
+        } else {
+          name.style.display = 'none';
+        }
+      }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', handleSearch);
+  </script>
+</body>
+</html>

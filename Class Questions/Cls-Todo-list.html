@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+</head>
+<body>
+  <h2>Todo List</h2>
+  <input type="text" id="taskInput" placeholder="Add a new task">
+  <button id="addTaskButton">Add Task</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    class TodoList {
+      constructor() {
+        this.tasks = [];
+        this.taskInput = document.getElementById('taskInput');
+        this.addTaskButton = document.getElementById('addTaskButton');
+        this.taskList = document.getElementById('taskList');
+
+        this.addTaskButton.addEventListener('click', () => this.addTask());
+      }
+
+      addTask() {
+        const task = this.taskInput.value.trim();
+        if (task) {
+          this.tasks.push(task);
+          this.taskInput.value = '';
+          this.render();
+        }
+      }
+
+      removeTask(index) {
+        this.tasks.splice(index, 1);
+        this.render();
+      }
+
+      render() {
+        this.taskList.innerHTML = '';
+        this.tasks.forEach((task, index) => {
+          const li = document.createElement('li');
+          li.textContent = task;
+          const removeButton = document.createElement('button');
+          removeButton.textContent = 'Remove';
+          removeButton.onclick = () => this.removeTask(index);
+          li.appendChild(removeButton);
+          this.taskList.appendChild(li);
+        });
+      }
+    }
+
+    new TodoList();
+  </script>
+</body>
+</html>

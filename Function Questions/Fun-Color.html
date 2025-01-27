@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Text Color</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #text {
+      font-size: 24px;
+      color: black;
+      margin: 20px;
+    }
+
+    .color-btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .red { background-color: #f28b82; }
+    .blue { background-color: #aecbfa; }
+    .green { background-color: #ccff90; }
+
+    .red:hover { background-color: #f35c50; }
+    .blue:hover { background-color: #82b4f8; }
+    .green:hover { background-color: #a7f05d; }
+  </style>
+</head>
+<body>
+  <h1>Change Text Color</h1>
+  <p id="text">This is the text whose color will change.</p>
+  
+  <button class="color-btn red" onclick="changeColor('red')">Red</button>
+  <button class="color-btn blue" onclick="changeColor('blue')">Blue</button>
+  <button class="color-btn green" onclick="changeColor('green')">Green</button>
+
+  <script>
+    function changeColor(color) {
+      document.getElementById('text').style.color = color;
+    }
+  </script>
+</body>
+</html>

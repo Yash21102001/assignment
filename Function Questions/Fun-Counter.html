@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter with Reset</title>
+  <style>
+
+    .counter-container {
+      background: #fff;
+      padding: 20px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .counter {
+      font-size: 48px;
+      font-weight: bold;
+      color: #333;
+      margin: 20px 0;
+    }
+    .button, .buttons {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .button.increment {
+      background-color: #4caf50;
+      color: #fff;
+    }
+    .button.reset,.button.reset:hover {
+      background-color: #f44336;
+      color: #fff;
+      background-color: #e53935;
+    }
+  </style>
+</head>
+<body>
+  <div class="counter-container">
+    <h1>Counter</h1>
+    <div class="counter" id="counter">0</div>
+    <div class="buttons">
+      <button class="button increment" onclick="incrementCounter()">Increment</button>
+      <button class="button reset" onclick="resetCounter()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    let count = 0;
+
+    function incrementCounter() {
+      count++;
+      document.getElementById('counter').innerText = count;
+    }
+
+    function resetCounter() {
+      count = 0;
+      document.getElementById('counter').innerText = count;
+    }
+  </script>
+</body>
+</html>
