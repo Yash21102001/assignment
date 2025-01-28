@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class based login Form</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+    .container {
+      width: 300px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        <div id="emailError" class="error"></div>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <div id="passwordError" class="error"></div>
+      </div>
+      <div>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    class LoginForm {
+      constructor(formId) {
+        this.form = document.getElementById(formId);
+        this.emailInput = this.form.getElementById("#email");
+        this.passwordInput = this.form.getElementById("#password");
+        this.emailError = this.form.getElementById("#emailError");
+        this.passwordError = this.form.getElementById("#passwordError");
+
+        this.initialize();
+      }
+
+      initialize() {
+        this.form.addEventListener("submit", (event) => this.handleSubmit(event));
+      }
+
+      handleSubmit(event) {
+        event.preventDefault();
+
+        const email = this.emailInput.value;
+        const password = this.passwordInput.value;
+
+        let valid = true;
+        let emailErrorMessage = "";
+        let passwordErrorMessage = "";
+
+        if (!email.includes('@')) {
+          emailErrorMessage = "Please enter a valid email address.";
+          valid = false;
+        }
+        if (!email.includes('.com')) {
+          emailErrorMessage = "Please enter a valid email address.";
+          valid = false;
+        }
+
+        if (password.length < 8) {
+          passwordErrorMessage = "Password must be at least 6 characters long.";
+          valid = false;
+        }
+
+        this.displayErrors(emailErrorMessage, passwordErrorMessage);
+
+        if (valid) {
+          alert("Form Submitted Successfully!");
+        }
+      }
+
+      displayErrors(emailError, passwordError) {
+        this.emailError.textContent = emailError;
+        this.passwordError.textContent = passwordError;
+      }
+    }
+
+    new LoginForm("loginForm");
+  </script>
+
+</body>
+</html>
